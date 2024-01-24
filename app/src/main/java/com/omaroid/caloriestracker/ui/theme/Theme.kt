@@ -9,20 +9,40 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import com.omaroid.core_ui.BrightGreen
+import com.omaroid.core_ui.DarkGray
+import com.omaroid.core_ui.DarkGreen
 import com.omaroid.core_ui.Dimensions
+import com.omaroid.core_ui.LightGray
 import com.omaroid.core_ui.LocalSpacing
+import com.omaroid.core_ui.MediumGray
+import com.omaroid.core_ui.Orange
+import com.omaroid.core_ui.TextWhite
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = BrightGreen,
+    onPrimary = DarkGreen,
+    secondary = Orange,
+    background = MediumGray,
+    onBackground = TextWhite,
+    surface = LightGray,
+    onSurface = TextWhite,
+    primaryContainer = Color.White,
+    onSecondary = Color.White,
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+    primary = BrightGreen,
+    onPrimary = DarkGreen,
+    secondary = Orange,
+    background = Color.White,
+    onBackground = DarkGray,
+    surface = Color.White,
+    onSurface = DarkGray,
+    primaryContainer = Color.White,
+    onSecondary = Color.White,
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
