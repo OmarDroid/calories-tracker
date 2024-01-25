@@ -7,7 +7,6 @@ import androidx.activity.compose.setContent
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.omaroid.caloriestracker.navigation.navigate
 import com.omaroid.caloriestracker.ui.theme.CaloriesTrackerTheme
 import com.omaroid.core.navigation.Route
 import com.omaroid.onboarding_presentation.welcome.WelcomeScreen
@@ -26,7 +25,11 @@ class MainActivity : ComponentActivity() {
                     startDestination = Route.WELCOME
                 ) {
                     composable(Route.WELCOME) {
-                        WelcomeScreen(onNavigate = navController::navigate)
+                        WelcomeScreen(
+                            onNextClick = {
+                                navController.navigate(Route.AGE)
+                            }
+                        )
                     }
                     composable(Route.AGE) {
 
