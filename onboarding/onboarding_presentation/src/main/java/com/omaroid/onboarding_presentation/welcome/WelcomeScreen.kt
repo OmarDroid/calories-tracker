@@ -49,5 +49,5 @@ fun WelcomeScreen(
 @Preview(showBackground = true)
 @Composable
 fun WelcomeScreenPreview() {
-    WelcomeScreen()
+    WelcomeScreen{}
 }
