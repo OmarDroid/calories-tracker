@@ -16,13 +16,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.omaroid.core_ui.LocalSpacing
 import com.omaroid.core.R
-import com.omaroid.core.navigation.Route
-import com.omaroid.core.util.UiEvent
 import com.omaroid.onboarding_presentation.components.ActionButton
 
 @Composable
 fun WelcomeScreen(
-    onNavigate: (UiEvent.Navigate) -> Unit
+    //onNextClick: () -> Unit
 ) {
     val spacing = LocalSpacing.current
     Column(
@@ -40,7 +38,7 @@ fun WelcomeScreen(
         Spacer(modifier = Modifier.height(spacing.spaceMedium))
         ActionButton(
             text = stringResource(id = R.string.next),
-            onClick = { onNavigate(UiEvent.Navigate(Route.AGE)) },
+            onClick = {  },
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
     }
@@ -49,5 +47,5 @@ fun WelcomeScreen(
 @Preview(showBackground = true)
 @Composable
 fun WelcomeScreenPreview() {
-    WelcomeScreen {}
+    WelcomeScreen()
 }
