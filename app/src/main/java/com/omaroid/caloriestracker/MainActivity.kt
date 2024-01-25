@@ -11,8 +11,9 @@ import com.omaroid.caloriestracker.navigation.navigate
 import com.omaroid.caloriestracker.ui.theme.CaloriesTrackerTheme
 import com.omaroid.core.navigation.Route
 import com.omaroid.onboarding_presentation.welcome.WelcomeScreen
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
