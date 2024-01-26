@@ -11,7 +11,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.LastBaseline
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
@@ -26,7 +25,7 @@ fun UnitTextField(
     unit: String,
     modifier: Modifier = Modifier,
     textStyle: TextStyle = TextStyle(
-        color = MaterialTheme.colorScheme.primaryContainer, fontSize = 70.sp
+        color = MaterialTheme.colorScheme.onPrimary, fontSize = 70.sp
     )
 ) {
     val spacing = LocalSpacing.current
