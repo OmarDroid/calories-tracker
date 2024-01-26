@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.omaroid.core.data.preferences.DefaultPreferences
 import com.omaroid.core.domain.preferences.Preferences
+import com.omaroid.core.domain.use_cases.FilterOutDigits
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,5 +28,9 @@ object AppModule {
         return DefaultPreferences(sharedPreferences)
     }
 
-
+    @Provides
+    @Singleton
+    fun provideFilterOutDigits(): FilterOutDigits {
+        return FilterOutDigits()
+    }
 }
