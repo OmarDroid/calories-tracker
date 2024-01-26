@@ -1,5 +1,6 @@
 package com.omaroid.onboarding_presentation.gender
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -25,11 +26,13 @@ class GenderViewModel @Inject constructor(
     val uiEvent = _uiEvent.receiveAsFlow()
 
     fun onGenderClick(gender: Gender) {
+        Log.i("GenderViewModel", "Gender Changed to $gender")
         selectedGender = gender
     }
 
     fun onNextClick() {
         viewModelScope.launch {
+            Log.i("GenderViewModel", "Saving ${selectedGender.gender}")
             preferences.saveGender(selectedGender)
             _uiEvent.send(UiEvent.Success)
         }
