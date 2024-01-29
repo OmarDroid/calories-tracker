@@ -17,6 +17,8 @@ import com.omaroid.caloriestracker.ui.theme.CaloriesTrackerTheme
 import com.omaroid.core.navigation.Route
 import com.omaroid.onboarding_presentation.age.AgeScreen
 import com.omaroid.onboarding_presentation.gender.GenderScreen
+import com.omaroid.onboarding_presentation.height.HeightScreen
+import com.omaroid.onboarding_presentation.weight.WeightScreen
 import com.omaroid.onboarding_presentation.welcome.WelcomeScreen
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -54,10 +56,20 @@ class MainActivity : ComponentActivity() {
                                 })
                         }
                         composable(Route.HEIGHT) {
-
+                            HeightScreen(
+                                snackbarHostState = snackbarHostState,
+                                onNextClick = {
+                                    navController.navigate(Route.WEIGHT)
+                                }
+                            )
                         }
                         composable(Route.WEIGHT) {
-
+                            WeightScreen(
+                                snackbarHostState = snackbarHostState,
+                                onNextClick = {
+                                    navController.navigate(Route.GOAL)
+                                }
+                            )
                         }
                         composable(Route.NUTRIENT_GOAL) {
 
