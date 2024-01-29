@@ -1,6 +1,5 @@
-package com.omaroid.onboarding_presentation.age
+package com.omaroid.onboarding_presentation.height
 
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -17,37 +16,36 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@HiltViewModel
-class AgeViewModel @Inject constructor(
-    private val filterOutDigits: FilterOutDigits,
-    private val preferences: Preferences
-) : ViewModel() {
 
-    var age by mutableStateOf("20")
+@HiltViewModel
+class HeightViewModel @Inject constructor(
+    private val preferences: Preferences,
+    private val filterOutDigits: FilterOutDigits
+) : ViewModel() {
+    var height by mutableStateOf("180")
         private set
 
     private val _uiEvent = Channel<UiEvent>()
     val uiEvent = _uiEvent.receiveAsFlow()
 
-    fun onAgeEnter(age: String) {
-        if (age.length <= 2) {
-            this.age = filterOutDigits(age)
-        }
+    fun onHeight(height: String) {
+        if (height.length <= 3)
+            this.height = filterOutDigits(height)
     }
 
     fun onNextClick() {
         viewModelScope.launch {
-            val ageNumber = age.toIntOrNull() ?: kotlin.run {
-                Log.i("AgeViewModel", "Age is $age")
+            val heightNumber = height.toIntOrNull() ?: kotlin.run {
                 _uiEvent.send(
                     UiEvent.ShowSnackBar(
-                        UiText.StringResources(R.string.error_age_cant_be_empty)
+                        UiText.StringResources(R.string.error_height_cant_be_empty)
                     )
                 )
                 return@launch
             }
-            preferences.saveAge(ageNumber)
+            preferences.saveHeight(heightNumber)
             _uiEvent.send(UiEvent.Success)
         }
     }
+
 }

@@ -14,10 +14,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import com.omaroid.core_ui.LocalSpacing
 import com.omaroid.core.R
-import com.omaroid.core.navigation.Route
-import com.omaroid.core.util.UiEvent
+import com.omaroid.core_ui.LocalSpacing
 import com.omaroid.onboarding_presentation.components.ActionButton
 
 @Composable
@@ -35,7 +33,7 @@ fun WelcomeScreen(
         Text(
             text = stringResource(id = R.string.welcome_text),
             textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.titleMedium
+            style = MaterialTheme.typography.titleSmall
         )
         Spacer(modifier = Modifier.height(spacing.spaceMedium))
         ActionButton(
