@@ -15,8 +15,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.omaroid.caloriestracker.ui.theme.CaloriesTrackerTheme
 import com.omaroid.core.navigation.Route
+import com.omaroid.onboarding_presentation.activity.ActivityScreen
 import com.omaroid.onboarding_presentation.age.AgeScreen
 import com.omaroid.onboarding_presentation.gender.GenderScreen
+import com.omaroid.onboarding_presentation.goal.GoalScreen
 import com.omaroid.onboarding_presentation.height.HeightScreen
 import com.omaroid.onboarding_presentation.weight.WeightScreen
 import com.omaroid.onboarding_presentation.welcome.WelcomeScreen
@@ -67,7 +69,7 @@ class MainActivity : ComponentActivity() {
                             WeightScreen(
                                 snackbarHostState = snackbarHostState,
                                 onNextClick = {
-                                    navController.navigate(Route.GOAL)
+                                    navController.navigate(Route.ACTIVITY)
                                 }
                             )
                         }
@@ -75,10 +77,18 @@ class MainActivity : ComponentActivity() {
 
                         }
                         composable(Route.ACTIVITY) {
-
+                            ActivityScreen(
+                                onNextClick = {
+                                    navController.navigate(Route.GOAL)
+                                }
+                            )
                         }
                         composable(Route.GOAL) {
-
+                            GoalScreen(
+                                onNextClick = {
+                                    navController.navigate(Route.NUTRIENT_GOAL)
+                                }
+                            )
                         }
                         composable(Route.TRACKER_OVERVIEW) {
 
