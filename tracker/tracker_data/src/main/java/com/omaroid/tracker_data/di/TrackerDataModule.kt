@@ -1,5 +1,8 @@
 package com.omaroid.tracker_data.di
 
+import android.app.Application
+import androidx.room.Room
+import com.omaroid.tracker_data.local.TrackerDatabase
 import com.omaroid.tracker_data.remote.OpenFoodApi
 import dagger.Module
 import dagger.Provides
@@ -15,7 +18,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object TrackerDataModule {
-
     @Provides
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
@@ -36,5 +38,15 @@ object TrackerDataModule {
             .client(client)
             .build()
             .create()
+    }
+
+    @Provides
+    @Singleton
+    fun provideTrackerDatabase(app: Application): TrackerDatabase {
+        return Room.databaseBuilder(
+            app,
+            TrackerDatabase::class.java,
+            "food_tracker_db"
+        ).build()
     }
 }
