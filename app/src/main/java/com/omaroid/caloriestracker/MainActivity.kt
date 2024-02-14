@@ -20,6 +20,7 @@ import com.omaroid.onboarding_presentation.age.AgeScreen
 import com.omaroid.onboarding_presentation.gender.GenderScreen
 import com.omaroid.onboarding_presentation.goal.GoalScreen
 import com.omaroid.onboarding_presentation.height.HeightScreen
+import com.omaroid.onboarding_presentation.nutrient_goal.NutrientGoalScreen
 import com.omaroid.onboarding_presentation.weight.WeightScreen
 import com.omaroid.onboarding_presentation.welcome.WelcomeScreen
 import dagger.hilt.android.AndroidEntryPoint
@@ -74,7 +75,12 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                         composable(Route.NUTRIENT_GOAL) {
-
+                            NutrientGoalScreen(
+                                snackbarHostState = snackbarHostState,
+                                onNextClick = {
+                                    navController.navigate(Route.TRACKER_OVERVIEW)
+                                }
+                            )
                         }
                         composable(Route.ACTIVITY) {
                             ActivityScreen(
