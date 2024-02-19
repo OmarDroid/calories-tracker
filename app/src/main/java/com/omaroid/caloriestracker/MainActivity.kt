@@ -14,6 +14,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.omaroid.caloriestracker.ui.theme.CaloriesTrackerTheme
+import com.omaroid.core.domain.preferences.Preferences
 import com.omaroid.core.navigation.Route
 import com.omaroid.onboarding_presentation.activity.ActivityScreen
 import com.omaroid.onboarding_presentation.age.AgeScreen
@@ -23,13 +24,19 @@ import com.omaroid.onboarding_presentation.height.HeightScreen
 import com.omaroid.onboarding_presentation.nutrient_goal.NutrientGoalScreen
 import com.omaroid.onboarding_presentation.weight.WeightScreen
 import com.omaroid.onboarding_presentation.welcome.WelcomeScreen
+import com.omaroid.tracker_presentation.tracker_overview.TrackerOverviewScreen
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    @Inject
+    lateinit var preferences: Preferences
+
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val shouldShowOnboarding = preferences.loadShouldShowOnBoarding()
         setContent {
             CaloriesTrackerTheme {
                 val snackbarHostState = remember { SnackbarHostState() }
@@ -39,7 +46,12 @@ class MainActivity : ComponentActivity() {
                     snackbarHost = { SnackbarHost(hostState = snackbarHostState) }
                 ) {
                     NavHost(
-                        navController = navController, startDestination = Route.WELCOME
+                        navController = navController,
+                        startDestination = if (shouldShowOnboarding) {
+                            Route.WELCOME
+                        } else {
+                            Route.TRACKER_OVERVIEW
+                        }
                     ) {
                         composable(Route.WELCOME) {
                             WelcomeScreen(onNextClick = {
@@ -97,7 +109,7 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                         composable(Route.TRACKER_OVERVIEW) {
-
+                            TrackerOverviewScreen()
                         }
                         composable(Route.SEARCH) {
 

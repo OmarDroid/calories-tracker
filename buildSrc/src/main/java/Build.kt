@@ -4,6 +4,10 @@ object Build {
 
     const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Kotlin.version}"
 
-    private const val hiltAndroidGradlePluginVersion = "2.38.1"
+    private const val hiltAndroidGradlePluginVersion = "2.48.1"
     const val hiltAndroidGradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:$hiltAndroidGradlePluginVersion"
+
+
+    private const val kpsPluginVersion = "1.8.10-1.0.9"
+    const val kspPlugin = "com.google.devtools.ksp:$kpsPluginVersion"
 }

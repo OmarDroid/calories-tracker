@@ -1,6 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
+apply plugin: ("com.google.devtools.ksp")
 apply plugin: 'kotlin-parcelize'
 
 android {
@@ -28,11 +28,11 @@ android {
     }
     compileOptions {
         coreLibraryDesugaringEnabled true
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 }
 
@@ -48,7 +48,7 @@ dependencies {
     implementation Compose.activityCompose
 
 
-    kapt DaggerHilt.hiltCompiler
+    ksp DaggerHilt.hiltCompiler
     implementation DaggerHilt.hiltAndroid
 
     testImplementation Testing.junit4
@@ -69,4 +69,5 @@ dependencies {
     androidTestImplementation Testing.mockk
     androidTestImplementation Testing.mockWebServer
     androidTestImplementation Testing.hiltTesting
+    ksp 'io.github.raamcosta.compose-destinations:ksp:1.6.13-beta'
 }

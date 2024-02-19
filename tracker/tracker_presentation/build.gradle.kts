@@ -9,11 +9,11 @@ apply {
 
 android {
     namespace = "com.omaroid.tracker_presentation"
-    compileSdk = 34
 }
 
 dependencies {
     implementation(project(Modules.core))
+    implementation(project(Modules.coreUi))
     implementation(project(Modules.trackerDomain))
     implementation(Coil.coilCompose)
 }
