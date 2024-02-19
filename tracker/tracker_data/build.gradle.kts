@@ -1,6 +1,7 @@
 plugins {
     `android-library`
     `kotlin-android`
+    id("com.google.devtools.ksp")
 }
 
 apply {
@@ -20,7 +21,7 @@ dependencies {
     implementation(Retrofit.okHttpLoggingInterceptor)
     implementation(Retrofit.moshiConverter)
 
-    "kapt"(Room.roomCompiler)
+    ksp(Room.roomCompiler)
     implementation(Room.roomKtx)
     implementation(Room.roomRuntime)
 }

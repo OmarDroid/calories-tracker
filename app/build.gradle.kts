@@ -2,7 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("dagger.hilt.android.plugin")
-    id("kotlin-kapt")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -33,17 +33,20 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_18
-        targetCompatibility = JavaVersion.VERSION_18
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "18"
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
     buildFeatures {
         compose = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = Compose.composeCompilerVersion
+    }
+    hilt {
+        enableAggregatingTask = false
     }
 }
 
@@ -61,7 +64,8 @@ dependencies {
 
     implementation(DaggerHilt.hiltAndroid)
     implementation(Compose.material3Compose)
-    kapt(DaggerHilt.hiltCompiler)
+    ksp(DaggerHilt.hiltCompiler)
+    ksp(DaggerHilt.hiltAndroid)
 
     implementation(project(Modules.core))
     implementation(project(Modules.coreUi))
@@ -83,7 +87,7 @@ dependencies {
     implementation(Retrofit.okHttpLoggingInterceptor)
     implementation(Retrofit.moshiConverter)
 
-    kapt(Room.roomCompiler)
+    ksp(Room.roomCompiler)
     implementation(Room.roomKtx)
     implementation(Room.roomRuntime)
 
@@ -105,7 +109,8 @@ dependencies {
     androidTestImplementation(Testing.mockkAndroid)
     androidTestImplementation(Testing.mockWebServer)
     androidTestImplementation(Testing.hiltTesting)
-    kaptAndroidTest(DaggerHilt.hiltCompiler)
+    kspAndroidTest(DaggerHilt.hiltCompiler)
     androidTestImplementation(Testing.testRunner)
+    ksp ("io.github.raamcosta.compose-destinations:ksp:1.6.13-beta")
 
 }
