@@ -1,5 +1,6 @@
 package com.omaroid.tracker_presentation.tracker_overview
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,6 +11,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -17,9 +19,13 @@ import com.omaroid.core.R
 import com.omaroid.core.util.UiText
 import com.omaroid.core_ui.LocalSpacing
 import com.omaroid.tracker_domain.model.MealType
+import com.omaroid.tracker_domain.model.TrackedFood
+import com.omaroid.tracker_presentation.tracker_overview.components.AddButton
 import com.omaroid.tracker_presentation.tracker_overview.components.DaySelector
 import com.omaroid.tracker_presentation.tracker_overview.components.ExpandableMeal
 import com.omaroid.tracker_presentation.tracker_overview.components.NutrientsHeader
+import com.omaroid.tracker_presentation.tracker_overview.components.TrackedFoodItem
+import com.omaroid.tracker_presentation.tracker_overview.components.TrackedFoodPerMeal
 import java.time.LocalDate
 
 @Composable
@@ -56,13 +62,36 @@ fun TrackerOverviewScreen(
             ExpandableMeal(
                 meal = meal,
                 onToggleClick = {viewModel.onEvent(TrackerOverviewEvent.OnToggleMealClick(meal))},
-                content = {},
+                content = {
+                    val foods = state.trackedFoods.filter {
+                        it.mealType == meal.mealType
+                    }
+                    TrackedFoodPerMeal(
+                        foods = foods,
+                        meal = meal,
+                        onDeleteClick = {
+                            viewModel.onEvent(
+                                TrackerOverviewEvent
+                                    .OnDeleteTrackerFood(it)
+                            )
+                        },
+                        onNavigateToSearch = {
+                            /*onNavigateToSearch(
+                                meal.name.asString(context),
+                                state.date.dayOfMonth,
+                                state.date.monthValue,
+                                state.date.year
+                            )*/
+                        }
+                    )
+                },
                 modifier = Modifier.fillMaxSize()
             )
 
         }
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable
@@ -125,7 +154,26 @@ private fun TrackerOverviewScreenPreview() {
             ExpandableMeal(
                 meal = meal,
                 onToggleClick = {},
-                content = {},
+                content = {
+                    TrackedFoodPerMeal(
+                        foods = listOf(
+                            TrackedFood(
+                                name = "Rice",
+                                carbs = 12,
+                                protein = 30,
+                                fat = 41,
+                                imageUrl = null,
+                                mealType = MealType.Breakfast,
+                                amount = 23,
+                                date = LocalDate.now(),
+                                calories = 230
+                            )
+                        ),
+                        meal = meal,
+                        onDeleteClick = {},
+                        onNavigateToSearch = {}
+                    )
+                },
                 modifier = Modifier.fillMaxSize()
             )
         }
