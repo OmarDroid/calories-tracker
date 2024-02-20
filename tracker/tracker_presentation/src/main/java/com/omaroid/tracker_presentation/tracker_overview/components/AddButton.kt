@@ -18,12 +18,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.pointer.PointerIcon.Companion.Text
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.omaroid.core_ui.LocalSpacing
 import com.omaroid.core.R
+import com.omaroid.core_ui.LocalSpacing
 
 @Composable
 fun AddButton(
@@ -54,7 +53,7 @@ fun AddButton(
         Spacer(modifier = Modifier.width(spacing.spaceMedium))
         Text(
             text = text,
-            style = MaterialTheme.typography.displaySmall,
+            style = MaterialTheme.typography.labelLarge,
             color = color
         )
     }
