@@ -1,5 +1,6 @@
 package com.omaroid.tracker_presentation.tracker_overview
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -8,8 +9,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -30,6 +33,7 @@ import java.time.LocalDate
 
 @Composable
 fun TrackerOverviewScreen(
+    onNavigateToSearch: (String, Int, Int, Int) -> Unit,
     viewModel: TrackerOverviewViewModel = hiltViewModel()
 ) {
     val spacing = LocalSpacing.current
@@ -39,6 +43,7 @@ fun TrackerOverviewScreen(
         modifier = Modifier
             .fillMaxSize()
             .padding(bottom = spacing.spaceMedium)
+            .background(MaterialTheme.colorScheme.background)
     ) {
         item {
             NutrientsHeader(state = state)
@@ -58,7 +63,8 @@ fun TrackerOverviewScreen(
             Spacer(modifier = Modifier.height(spacing.spaceMedium))
         }
 
-        items(state.meals) {meal ->
+        items(state.meals) {
+            meal ->
             ExpandableMeal(
                 meal = meal,
                 onToggleClick = {viewModel.onEvent(TrackerOverviewEvent.OnToggleMealClick(meal))},
@@ -76,18 +82,17 @@ fun TrackerOverviewScreen(
                             )
                         },
                         onNavigateToSearch = {
-                            /*onNavigateToSearch(
+                            onNavigateToSearch(
                                 meal.name.asString(context),
                                 state.date.dayOfMonth,
                                 state.date.monthValue,
                                 state.date.year
-                            )*/
-                        }
+                            )
+                        },
                     )
                 },
                 modifier = Modifier.fillMaxSize()
             )
-
         }
     }
 }
@@ -176,6 +181,7 @@ private fun TrackerOverviewScreenPreview() {
                 },
                 modifier = Modifier.fillMaxSize()
             )
+            Spacer(modifier = Modifier.height(16.dp).background(color = Color.Red))
         }
     }
 }

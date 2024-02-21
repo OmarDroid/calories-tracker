@@ -14,8 +14,10 @@ import androidx.compose.ui.platform.LocalContext
 import com.omaroid.core_ui.BrightGreen
 import com.omaroid.core_ui.DarkGray
 import com.omaroid.core_ui.DarkGreen
+import com.omaroid.core_ui.BrightLightGreen
 import com.omaroid.core_ui.Dimensions
 import com.omaroid.core_ui.LightGray
+import com.omaroid.core_ui.LightGreen
 import com.omaroid.core_ui.LocalSpacing
 import com.omaroid.core_ui.MediumGray
 import com.omaroid.core_ui.Orange
@@ -31,18 +33,20 @@ private val DarkColorScheme = darkColorScheme(
     onSurface = TextWhite,
     primaryContainer = Color.White,
     onSecondary = Color.White,
+    onSurfaceVariant = BrightLightGreen
 )
 
 private val LightColorScheme = lightColorScheme(
     primary = BrightGreen,
     onPrimary = DarkGreen,
     secondary = Orange,
-    background = Color.White,
+    background = LightGreen,
     onBackground = DarkGray,
     surface = Color.White,
     onSurface = DarkGray,
     primaryContainer = Color.White,
     onSecondary = Color.White,
+    onSurfaceVariant = BrightLightGreen
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
