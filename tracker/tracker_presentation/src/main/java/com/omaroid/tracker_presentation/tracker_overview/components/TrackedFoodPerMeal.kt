@@ -44,8 +44,7 @@ fun TrackedFoodPerMeal(
                 id = R.string.add_meal,
                 meal.name.asString(context)
             ),
-            onClick =
-            onNavigateToSearch,
+            onClick = onNavigateToSearch,
             modifier = Modifier.fillMaxWidth()
         )
     }
