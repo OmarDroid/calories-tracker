@@ -9,10 +9,13 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.remember
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.omaroid.caloriestracker.ui.theme.CaloriesTrackerTheme
 import com.omaroid.core.domain.preferences.Preferences
 import com.omaroid.core.navigation.Route
@@ -24,6 +27,7 @@ import com.omaroid.onboarding_presentation.height.HeightScreen
 import com.omaroid.onboarding_presentation.nutrient_goal.NutrientGoalScreen
 import com.omaroid.onboarding_presentation.weight.WeightScreen
 import com.omaroid.onboarding_presentation.welcome.WelcomeScreen
+import com.omaroid.tracker_presentation.search.SearchScreen
 import com.omaroid.tracker_presentation.tracker_overview.TrackerOverviewScreen
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -33,6 +37,7 @@ class MainActivity : ComponentActivity() {
     @Inject
     lateinit var preferences: Preferences
 
+    @OptIn(ExperimentalComposeUiApi::class)
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -109,10 +114,49 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                         composable(Route.TRACKER_OVERVIEW) {
-                            TrackerOverviewScreen()
+                            TrackerOverviewScreen(
+                                onNavigateToSearch = { mealName, day, month, year ->
+                                    navController.navigate(
+                                        Route.SEARCH +
+                                                "/$mealName" +
+                                                "/$day" +
+                                                "/$month" +
+                                                "/$year"
+                                    )
+                                }
+                            )
                         }
-                        composable(Route.SEARCH) {
-
+                        composable(
+                            route = Route.SEARCH + "/{mealName}/{dayOfMonth}/{month}/{year}",
+                            arguments = listOf(
+                                navArgument("mealName") {
+                                    type = NavType.StringType
+                                },
+                                navArgument("dayOfMonth") {
+                                    type = NavType.IntType
+                                },
+                                navArgument("month") {
+                                    type = NavType.IntType
+                                },
+                                navArgument("year") {
+                                    type = NavType.IntType
+                                },
+                            )
+                        ) {
+                            val mealName = it.arguments?.getString("mealName")!!
+                            val dayOfMonth = it.arguments?.getInt("dayOfMonth")!!
+                            val month = it.arguments?.getInt("month")!!
+                            val year = it.arguments?.getInt("year")!!
+                            SearchScreen(
+                                snackbarHostState = snackbarHostState,
+                                mealName = mealName,
+                                dayOfMonth = dayOfMonth,
+                                month = month,
+                                year = year,
+                                onNavigateUp = {
+                                    navController.navigateUp()
+                                }
+                            )
                         }
 
                     }

@@ -23,7 +23,7 @@ fun NutrientInfo(
     amountColor: Color = MaterialTheme.colorScheme.onBackground,
     unitTextSize: TextUnit = 14.sp,
     unitColor: Color = MaterialTheme.colorScheme.onBackground,
-    nameTextStyle: TextStyle = MaterialTheme.typography.labelMedium
+    nameTextStyle: TextStyle = MaterialTheme.typography.labelSmall
 ) {
     Column(
         modifier = modifier,
@@ -41,6 +41,7 @@ fun NutrientInfo(
             text = name,
             color = MaterialTheme.colorScheme.onBackground,
             style = nameTextStyle,
+            fontSize = 18.sp,
             fontWeight = FontWeight.Light
         )
     }

@@ -28,10 +28,16 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+    packagingOptions {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            merges += "META-INF/LICENSE.md"
+            merges += "META-INF/LICENSE-notice.md"
+        }
+    }
 }
 
 dependencies {
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
     ksp DaggerHilt.hiltCompiler
     implementation DaggerHilt.hiltAndroid
     ksp DaggerHilt.hiltAndroid
@@ -55,4 +61,5 @@ dependencies {
     androidTestImplementation Testing.mockWebServer
     androidTestImplementation Testing.hiltTesting
     ksp 'io.github.raamcosta.compose-destinations:ksp:1.6.13-beta'
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3")
 }

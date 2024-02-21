@@ -55,7 +55,7 @@ fun TrackedFoodItem(
                 elevation = 1.dp,
                 shape = RoundedCornerShape(5.dp)
             )
-            .background(MaterialTheme.colorScheme.surface)
+            .background(MaterialTheme.colorScheme.background)
             .padding(end = spacing.spaceMedium)
             .height(100.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
