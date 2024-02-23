@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.LastBaseline
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
@@ -19,7 +20,7 @@ fun UnitDisplay(
     modifier: Modifier = Modifier,
     amount: Int,
     unit: String,
-    amountTextSize: TextUnit = 20.sp,
+    amountTextSize: TextUnit = 16.sp,
     amountColor: Color = MaterialTheme.colorScheme.onPrimary,
     unitTextSize: TextUnit = 14.sp,
     unitColor: Color = MaterialTheme.colorScheme.onPrimary
@@ -31,7 +32,8 @@ fun UnitDisplay(
           text = amount.toString(),
           style = MaterialTheme.typography.titleLarge,
           fontSize = amountTextSize,
-          color = amountColor
+          color = amountColor,
+          overflow = TextOverflow.Ellipsis,
       )
       Spacer(modifier = Modifier.width(spacing.spaceExtraSmall))
         Text(
@@ -39,7 +41,8 @@ fun UnitDisplay(
             text = unit,
             style = MaterialTheme.typography.labelMedium,
             fontSize = unitTextSize,
-            color = unitColor
+            color = unitColor,
+            overflow = TextOverflow.Ellipsis,
         )
     }
 }

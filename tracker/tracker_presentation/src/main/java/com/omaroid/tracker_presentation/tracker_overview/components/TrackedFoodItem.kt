@@ -50,12 +50,6 @@ fun TrackedFoodItem(
     Row(
         modifier = modifier
             .clip(RoundedCornerShape(5.dp))
-            .padding(spacing.spaceExtraSmall)
-            .shadow(
-                elevation = 1.dp,
-                shape = RoundedCornerShape(5.dp)
-            )
-            .background(MaterialTheme.colorScheme.background)
             .padding(end = spacing.spaceMedium)
             .height(100.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -90,7 +84,8 @@ fun TrackedFoodItem(
                 text = trackedFood.name,
                 style = MaterialTheme.typography.displaySmall,
                 overflow = TextOverflow.Ellipsis,
-                maxLines = 2
+                maxLines = 2,
+                color = MaterialTheme.colorScheme.onPrimary
             )
             Spacer(modifier = Modifier.height(spacing.spaceExtraSmall))
             Text(
@@ -99,6 +94,7 @@ fun TrackedFoodItem(
                     trackedFood.amount,
                     trackedFood.calories
                 ),
+                color = MaterialTheme.colorScheme.onPrimary
             )
         }
         Spacer(modifier = Modifier.width(spacing.spaceMedium))

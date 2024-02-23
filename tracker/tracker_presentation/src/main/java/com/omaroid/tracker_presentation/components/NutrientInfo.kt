@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
@@ -19,10 +20,10 @@ fun NutrientInfo(
     name: String,
     amount: Int,
     unit: String,
-    amountTextSize: TextUnit = 20.sp,
-    amountColor: Color = MaterialTheme.colorScheme.onBackground,
+    amountTextSize: TextUnit = 18.sp,
+    amountColor: Color = MaterialTheme.colorScheme.onPrimary,
     unitTextSize: TextUnit = 14.sp,
-    unitColor: Color = MaterialTheme.colorScheme.onBackground,
+    unitColor: Color = MaterialTheme.colorScheme.onPrimary,
     nameTextStyle: TextStyle = MaterialTheme.typography.labelSmall
 ) {
     Column(
@@ -39,10 +40,11 @@ fun NutrientInfo(
         )
         Text(
             text = name,
-            color = MaterialTheme.colorScheme.onBackground,
+            color = MaterialTheme.colorScheme.onPrimary,
             style = nameTextStyle,
             fontSize = 18.sp,
-            fontWeight = FontWeight.Light
+            fontWeight = FontWeight.Light,
+            overflow = TextOverflow.Ellipsis,
         )
     }
 }

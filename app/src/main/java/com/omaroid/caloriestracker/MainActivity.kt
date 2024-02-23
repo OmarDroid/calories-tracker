@@ -43,7 +43,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         val shouldShowOnboarding = preferences.loadShouldShowOnBoarding()
         setContent {
-            CaloriesTrackerTheme {
+            CaloriesTrackerTheme(dynamicColor = false) {
                 val snackbarHostState = remember { SnackbarHostState() }
                 val navController = rememberNavController()
                 Scaffold(

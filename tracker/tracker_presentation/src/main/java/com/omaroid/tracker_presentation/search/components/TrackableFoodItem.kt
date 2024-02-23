@@ -20,6 +20,8 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -57,17 +59,14 @@ fun TrackableFoodItem(
 ) {
     val food = trackableFoodUiState.food
     val spacing = LocalSpacing.current
-    Column(
+    Card(
         modifier = modifier
-            .clip(RoundedCornerShape(5.dp))
-            .padding(spacing.spaceExtraSmall)
-            .shadow(
-                elevation = 1.dp,
-                shape = RoundedCornerShape(5.dp)
-            )
-            .background(MaterialTheme.colorScheme.surface)
-            .clickable { onClick() }
-            .padding(end = spacing.spaceMedium)
+            .clip(RoundedCornerShape(10.dp))
+            .padding(spacing.spaceSmall)
+            .clickable { onClick() },
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.primary,
+        )
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -100,7 +99,8 @@ fun TrackableFoodItem(
                         text = food.name,
                         style = MaterialTheme.typography.displayMedium,
                         maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
+                        overflow = TextOverflow.Ellipsis,
+                        color = MaterialTheme.colorScheme.onPrimary
                     )
                     Spacer(modifier = Modifier.height(spacing.spaceSmall))
                     Text(
@@ -108,11 +108,14 @@ fun TrackableFoodItem(
                             id = R.string.kcal_per_100g,
                             food.caloriesPer100g
                         ),
-                        style = MaterialTheme.typography.displayMedium
+                        style = MaterialTheme.typography.displayMedium,
+                        color = MaterialTheme.colorScheme.onPrimary
                     )
                 }
             }
-            Row {
+            Row(
+                modifier = Modifier.padding(end = spacing.spaceExtraSmall)
+            ) {
                 NutrientInfo(
                     name = stringResource(id = R.string.carbs),
                     amount = food.carbsPer100g,
@@ -171,7 +174,7 @@ fun TrackableFoodItem(
                             .border(
                                 shape = RoundedCornerShape(5.dp),
                                 width = 0.5.dp,
-                                color = MaterialTheme.colorScheme.onSurface
+                                color = MaterialTheme.colorScheme.inversePrimary
                             )
                             .alignBy(LastBaseline)
                             .padding(spacing.spaceMedium)
@@ -180,7 +183,8 @@ fun TrackableFoodItem(
                     Text(
                         text = stringResource(id = R.string.grams),
                         style = MaterialTheme.typography.labelLarge,
-                        modifier = Modifier.alignBy(LastBaseline)
+                        modifier = Modifier.alignBy(LastBaseline),
+                        color = MaterialTheme.colorScheme.onPrimary
                     )
                 }
                 IconButton(
@@ -189,7 +193,8 @@ fun TrackableFoodItem(
                 ) {
                     Icon(
                         imageVector = Icons.Default.Check,
-                        contentDescription = stringResource(id = R.string.track)
+                        contentDescription = stringResource(id = R.string.track),
+                        tint = MaterialTheme.colorScheme.onPrimary
                     )
                 }
             }
