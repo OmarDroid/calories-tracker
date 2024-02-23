@@ -16,7 +16,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.omaroid.core.R
 import com.omaroid.core.util.UiEvent
@@ -78,7 +80,10 @@ fun HeightScreenContent(
             UnitTextField(
                 value = height,
                 onValueChanged = onHeightChanged,
-                unit = stringResource(id = R.string.cm)
+                unit = stringResource(id = R.string.cm),
+                textStyle = TextStyle(
+                    color = MaterialTheme.colorScheme.primary, fontSize = 70.sp
+                )
             )
         }
         ActionButton(

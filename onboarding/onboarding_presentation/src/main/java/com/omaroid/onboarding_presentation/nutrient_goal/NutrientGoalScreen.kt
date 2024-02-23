@@ -16,7 +16,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.omaroid.core.util.UiEvent
 import com.omaroid.core_ui.LocalSpacing
@@ -88,19 +90,28 @@ fun NutrientGoalScreenContent(
             UnitTextField(
                 value = carbRatio,
                 onValueChanged = onCarbRatioChanged,
-                unit = stringResource(id = R.string.percent_carbs)
+                unit = stringResource(id = R.string.percent_carbs),
+                textStyle = TextStyle(
+                    color = MaterialTheme.colorScheme.primary, fontSize = 70.sp
+                )
             )
             Spacer(modifier = Modifier.height(spacing.spaceMedium))
             UnitTextField(
                 value = proteinRatio,
                 onValueChanged = onProteinRatioChanged,
-                unit = stringResource(id = R.string.percent_proteins)
+                unit = stringResource(id = R.string.percent_proteins),
+                textStyle = TextStyle(
+                    color = MaterialTheme.colorScheme.primary, fontSize = 70.sp
+                )
             )
             Spacer(modifier = Modifier.height(spacing.spaceMedium))
             UnitTextField(
                 value = fatRatio,
                 onValueChanged = onFatRatioChanged,
-                unit = stringResource(id = R.string.percent_fats)
+                unit = stringResource(id = R.string.percent_fats),
+                textStyle = TextStyle(
+                    color = MaterialTheme.colorScheme.primary, fontSize = 70.sp
+                )
             )
         }
         ActionButton(

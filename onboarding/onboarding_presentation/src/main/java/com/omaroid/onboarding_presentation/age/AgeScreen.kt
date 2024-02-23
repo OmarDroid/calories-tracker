@@ -1,5 +1,6 @@
 package com.omaroid.onboarding_presentation.age
 
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,7 +17,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.omaroid.core.R
 import com.omaroid.core.util.UiEvent
@@ -77,7 +80,10 @@ fun AgeScreenContent(
             UnitTextField(
                 value = age,
                 onValueChanged = onAgeChanged,
-                unit = stringResource(id = R.string.years)
+                unit = stringResource(id = R.string.years),
+                textStyle = TextStyle(
+                    color = MaterialTheme.colorScheme.primary, fontSize = 70.sp
+                )
             )
         }
         ActionButton(
@@ -88,7 +94,17 @@ fun AgeScreenContent(
     }
 }
 
-@Preview(showBackground = true)
+
+@Preview(
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    name = "DefaultPreviewDark",
+    showBackground = true
+)
+@Preview(
+    uiMode = Configuration.UI_MODE_NIGHT_NO,
+    name = "DefaultPreviewLight",
+    showBackground = true
+)
 @Composable
 private fun AgesScreenPreview() {
     AgeScreenContent(

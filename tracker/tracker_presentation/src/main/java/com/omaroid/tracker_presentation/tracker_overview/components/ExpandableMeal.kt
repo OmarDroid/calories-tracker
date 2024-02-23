@@ -52,7 +52,7 @@ fun ExpandableMeal(
             .clip(RoundedCornerShape(10.dp))
             .padding(spacing.spaceSmall),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.onSurfaceVariant,
+            containerColor = MaterialTheme.colorScheme.primary,
         )
     ) {
         Row(
@@ -76,7 +76,8 @@ fun ExpandableMeal(
                 ) {
                     Text(
                         text = meal.name.asString(context),
-                        style = MaterialTheme.typography.headlineSmall
+                        style = MaterialTheme.typography.headlineSmall,
+                        color = MaterialTheme.colorScheme.onPrimary
                     )
                     Icon(
                         imageVector = if (meal.isExpanded) {
@@ -84,7 +85,8 @@ fun ExpandableMeal(
                         } else Icons.Default.KeyboardArrowDown,
                         contentDescription = if(meal.isExpanded) {
                             stringResource(id = R.string.collapse)
-                        } else stringResource(id = R.string.extend)
+                        } else stringResource(id = R.string.extend),
+                        tint = MaterialTheme.colorScheme.onPrimary
                     )
                 }
                 Spacer(modifier = Modifier.height(spacing.spaceSmall))
@@ -95,7 +97,7 @@ fun ExpandableMeal(
                     UnitDisplay(
                         amount = meal.calories,
                         unit = stringResource(id = R.string.kcal),
-                        amountTextSize = 30.sp
+                        amountTextSize = 20.sp
                     )
                     Row {
                         NutrientInfo(

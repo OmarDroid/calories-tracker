@@ -127,11 +127,14 @@ fun SearchScreenContent(
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .background(MaterialTheme.colorScheme.inversePrimary)
             .padding(spacing.spaceMedium)
+
     ) {
         Text(
             text = stringResource(id = R.string.add_meal, mealName),
-            style = MaterialTheme.typography.titleMedium
+            style = MaterialTheme.typography.titleMedium,
+            color = MaterialTheme.colorScheme.onPrimary
         )
         Spacer(modifier = Modifier.height(spacing.spaceMedium))
         SearchTextField(
@@ -151,7 +154,6 @@ fun SearchScreenContent(
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .background(MaterialTheme.colorScheme.onSurfaceVariant)
         ) {
             items(trackableFood) { food ->
                 TrackableFoodItem(
@@ -180,7 +182,8 @@ fun SearchScreenContent(
                 Text(
                     text = stringResource(id = R.string.no_results),
                     style = MaterialTheme.typography.displayLarge,
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
+                    color = MaterialTheme.colorScheme.onPrimary
                 )
             }
         }

@@ -8,5 +8,5 @@
             @color/action_bar
         </item>
     </style>
-    <color name="action_bar">#F8B76D</color>
+    <color name="action_bar">#543601</color>
 </resources>

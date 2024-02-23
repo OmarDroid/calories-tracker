@@ -1,5 +1,6 @@
 package com.omaroid.tracker_presentation.tracker_overview
 
+import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -42,8 +43,7 @@ fun TrackerOverviewScreen(
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .padding(bottom = spacing.spaceMedium)
-            .background(MaterialTheme.colorScheme.background)
+            .background(MaterialTheme.colorScheme.inversePrimary)
     ) {
         item {
             NutrientsHeader(state = state)
@@ -98,7 +98,16 @@ fun TrackerOverviewScreen(
 }
 
 
-@Preview(showBackground = true)
+@Preview(
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    name = "DefaultPreviewDark",
+    showBackground = true
+)
+@Preview(
+    uiMode = Configuration.UI_MODE_NIGHT_NO,
+    name = "DefaultPreviewLight",
+    showBackground = true
+)
 @Composable
 private fun TrackerOverviewScreenPreview() {
     val defaultMeals = listOf(

@@ -35,7 +35,7 @@ fun NutrientBarInfo(
     strokeWidth: Dp = 8.dp,
 ) {
     val background = MaterialTheme.colorScheme.background
-    val goalExceededColor = MaterialTheme.colorScheme.error
+    val goalExceededColor = MaterialTheme.colorScheme.onError
     val angleRatio = remember {
         Animatable(0f)
     }
