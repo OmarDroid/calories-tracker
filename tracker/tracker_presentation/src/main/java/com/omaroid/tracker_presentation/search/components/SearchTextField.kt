@@ -1,6 +1,5 @@
 package com.omaroid.tracker_presentation.search.components
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -21,7 +20,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.focus.FocusState
 import androidx.compose.ui.focus.onFocusChanged
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
@@ -29,6 +28,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.omaroid.core.R
 import com.omaroid.core_ui.LocalSpacing
+import com.omaroid.core.util.TestTags.searchTextField
 
 @Composable
 fun SearchTextField(
@@ -68,6 +68,7 @@ fun SearchTextField(
                 .padding(spacing.spaceMedium)
                 .padding(end = spacing.spaceMedium)
                 .onFocusChanged { onFocusChanged(it) }
+                .testTag(searchTextField)
         )
         if (shouldShowHint) {
             Text(

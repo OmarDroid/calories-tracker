@@ -33,6 +33,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.LastBaseline
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -43,6 +44,7 @@ import androidx.compose.ui.unit.sp
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import com.omaroid.core.R
+import com.omaroid.core.util.TestTags.amountTextField
 import com.omaroid.core_ui.LocalSpacing
 import com.omaroid.tracker_domain.model.TrackableFood
 import com.omaroid.tracker_presentation.components.NutrientInfo
@@ -178,6 +180,7 @@ fun TrackableFoodItem(
                             )
                             .alignBy(LastBaseline)
                             .padding(spacing.spaceMedium)
+                            .testTag(amountTextField)
                     )
                     Spacer(modifier = Modifier.width(spacing.spaceExtraSmall))
                     Text(
