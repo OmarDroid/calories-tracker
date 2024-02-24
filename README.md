@@ -14,7 +14,6 @@ A Kotlin clean multi module, MVVM - Jetpack Compose android mobile application t
 * Unit test dependencies
 * UI test dependencies
 
-<img src="https://github.com/OmarDroid/calories-tracker/blob/readme/1.png"  width="300" height="550">
-<img src="https://github.com/OmarDroid/calories-tracker/blob/readme/2.png"  width="300" height="550">
-<img src="https://github.com/OmarDroid/calories-tracker/blob/readme/3.png"  width="300" height="550">
-<img src="https://github.com/OmarDroid/calories-tracker/blob/readme/4.png"  width="300" height="550">
+<img src="https://github.com/OmarDroid/calories-tracker/blob/readme/1.png"  width="260" height="550"> <img src="https://github.com/OmarDroid/calories-tracker/blob/readme/2.png"  width="260" height="550">
+
+<img src="https://github.com/OmarDroid/calories-tracker/blob/readme/3.png"  width="260" height="550"> <img src="https://github.com/OmarDroid/calories-tracker/blob/readme/4.png"  width="260" height="550">
