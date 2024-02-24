@@ -16,7 +16,7 @@ android {
         versionCode = ProjectConfig.versionCode
         versionName = ProjectConfig.versionName
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.omaroid.caloriestracker.HiltTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -47,6 +47,13 @@ android {
     }
     hilt {
         enableAggregatingTask = false
+    }
+    packagingOptions {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            merges += "META-INF/LICENSE.md"
+            merges += "META-INF/LICENSE-notice.md"
+        }
     }
 }
 
@@ -111,6 +118,4 @@ dependencies {
     androidTestImplementation(Testing.hiltTesting)
     kspAndroidTest(DaggerHilt.hiltCompiler)
     androidTestImplementation(Testing.testRunner)
-    ksp ("io.github.raamcosta.compose-destinations:ksp:1.6.13-beta")
-
 }
